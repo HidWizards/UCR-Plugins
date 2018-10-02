@@ -4,18 +4,38 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28010.2019
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxesToAxesTrim", "AxesToAxesTrim\AxesToAxesTrim.csproj", "{B4989441-115E-47E2-BF89-4E02A426E5A5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3B55D2DA-AB7B-461D-AB16-9D1F16B65C32} = {3B55D2DA-AB7B-461D-AB16-9D1F16B65C32}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxesRangeToButton", "AxesRangeToButton\AxesRangeToButton.csproj", "{73306ECD-6C67-4FA6-9259-433945A23788}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxesToAxesRotation", "AxesToAxesRotation\AxesToAxesRotation.csproj", "{B00E4B49-FD54-44BB-9819-A05AA0832A53}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3B55D2DA-AB7B-461D-AB16-9D1F16B65C32} = {3B55D2DA-AB7B-461D-AB16-9D1F16B65C32}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxisToDelta", "AxisToDelta\AxisToDelta.csproj", "{3CF5AA45-EF33-4286-A9A6-80CC4240E6CB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3B55D2DA-AB7B-461D-AB16-9D1F16B65C32} = {3B55D2DA-AB7B-461D-AB16-9D1F16B65C32}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeltaToAxis", "DeltaToAxis\DeltaToAxis.csproj", "{BC6CF2C8-CC80-4EAE-9AE2-8D23F4E744D3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3B55D2DA-AB7B-461D-AB16-9D1F16B65C32} = {3B55D2DA-AB7B-461D-AB16-9D1F16B65C32}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ButtonToButtonsLongPress", "ButtonToButtonsLongPress\ButtonToButtonsLongPress.csproj", "{0F040184-01B9-476D-B533-BF3B07F9D7A9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3B55D2DA-AB7B-461D-AB16-9D1F16B65C32} = {3B55D2DA-AB7B-461D-AB16-9D1F16B65C32}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxisToAxisCumulative", "AxisToAxisCumulative\AxisToAxisCumulative.csproj", "{71E08E57-7BD2-486F-B9B8-7B5D26FCC8C7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3B55D2DA-AB7B-461D-AB16-9D1F16B65C32} = {3B55D2DA-AB7B-461D-AB16-9D1F16B65C32}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_Build", "_Build\_Build.csproj", "{3B55D2DA-AB7B-461D-AB16-9D1F16B65C32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +71,10 @@ Global
 		{71E08E57-7BD2-486F-B9B8-7B5D26FCC8C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71E08E57-7BD2-486F-B9B8-7B5D26FCC8C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71E08E57-7BD2-486F-B9B8-7B5D26FCC8C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B55D2DA-AB7B-461D-AB16-9D1F16B65C32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B55D2DA-AB7B-461D-AB16-9D1F16B65C32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B55D2DA-AB7B-461D-AB16-9D1F16B65C32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B55D2DA-AB7B-461D-AB16-9D1F16B65C32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
