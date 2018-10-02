@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxisToDelta", "AxisToDelta\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeltaToAxis", "DeltaToAxis\DeltaToAxis.csproj", "{BC6CF2C8-CC80-4EAE-9AE2-8D23F4E744D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ButtonToButtonsLongPress", "ButtonToButtonsLongPress\ButtonToButtonsLongPress.csproj", "{0F040184-01B9-476D-B533-BF3B07F9D7A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{BC6CF2C8-CC80-4EAE-9AE2-8D23F4E744D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC6CF2C8-CC80-4EAE-9AE2-8D23F4E744D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC6CF2C8-CC80-4EAE-9AE2-8D23F4E744D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F040184-01B9-476D-B533-BF3B07F9D7A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F040184-01B9-476D-B533-BF3B07F9D7A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F040184-01B9-476D-B533-BF3B07F9D7A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F040184-01B9-476D-B533-BF3B07F9D7A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
