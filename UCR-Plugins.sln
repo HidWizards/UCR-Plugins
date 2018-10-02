@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2019
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxesToAxesTrim", "AxesToAxesTrim\AxesToAxesTrim.csproj", "{B4989441-115E-47E2-BF89-4E02A426E5A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxesRangeToButton", "AxesRangeToButton\AxesRangeToButton.csproj", "{73306ECD-6C67-4FA6-9259-433945A23788}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4989441-115E-47E2-BF89-4E02A426E5A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4989441-115E-47E2-BF89-4E02A426E5A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4989441-115E-47E2-BF89-4E02A426E5A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4989441-115E-47E2-BF89-4E02A426E5A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73306ECD-6C67-4FA6-9259-433945A23788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73306ECD-6C67-4FA6-9259-433945A23788}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73306ECD-6C67-4FA6-9259-433945A23788}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73306ECD-6C67-4FA6-9259-433945A23788}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {079529E7-E845-4688-8807-64DED05C3554}
+	EndGlobalSection
+EndGlobal
