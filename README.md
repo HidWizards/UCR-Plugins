@@ -40,3 +40,9 @@ Allows you to map one axis to another in "Cumulative" mode.
 When you move the input axis, the amount of deflection determines how quickly the output axis moves in that direction.  
 Useful, for example, if you wish to use a stick which springs back to center to control a throttle.  
 Requested by Spadino
+
+## Developer Notes
+### Building  
+The `_Build` project references `UCR.Core.dll` and when built, copies it into it's solution folder.  
+All the plugins then reference that DLL, so that if you wish to target a different `UCR.Core.dll`, you only have to change it in one place.  
+If you clone this repo to the same parent folder as the `UCR` repo, then the reference in `_Build` should just work (As it uses `..\..`)
