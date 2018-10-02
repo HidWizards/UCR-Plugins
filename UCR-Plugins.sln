@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxesRangeToButton", "AxesRa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxesToAxesRotation", "AxesToAxesRotation\AxesToAxesRotation.csproj", "{B00E4B49-FD54-44BB-9819-A05AA0832A53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxisToDelta", "AxisToDelta\AxisToDelta.csproj", "{3CF5AA45-EF33-4286-A9A6-80CC4240E6CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeltaToAxis", "DeltaToAxis\DeltaToAxis.csproj", "{BC6CF2C8-CC80-4EAE-9AE2-8D23F4E744D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{B00E4B49-FD54-44BB-9819-A05AA0832A53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B00E4B49-FD54-44BB-9819-A05AA0832A53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B00E4B49-FD54-44BB-9819-A05AA0832A53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CF5AA45-EF33-4286-A9A6-80CC4240E6CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CF5AA45-EF33-4286-A9A6-80CC4240E6CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CF5AA45-EF33-4286-A9A6-80CC4240E6CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CF5AA45-EF33-4286-A9A6-80CC4240E6CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC6CF2C8-CC80-4EAE-9AE2-8D23F4E744D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC6CF2C8-CC80-4EAE-9AE2-8D23F4E744D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC6CF2C8-CC80-4EAE-9AE2-8D23F4E744D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC6CF2C8-CC80-4EAE-9AE2-8D23F4E744D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3CF5AA45-EF33-4286-A9A6-80CC4240E6CB}</ProjectGuid>
+    <ProjectGuid>{BC6CF2C8-CC80-4EAE-9AE2-8D23F4E744D3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AxisToDelta</RootNamespace>
-    <AssemblyName>AxisToDelta</AssemblyName>
+    <RootNamespace>DeltaToAxis</RootNamespace>
+    <AssemblyName>DeltaToAxis</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -44,7 +44,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AxisToDelta.cs" />
+    <Compile Include="DeltaToAxis.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
