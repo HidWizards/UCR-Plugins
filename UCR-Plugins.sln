@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxesToAxesTrim", "AxesToAxe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxesRangeToButton", "AxesRangeToButton\AxesRangeToButton.csproj", "{73306ECD-6C67-4FA6-9259-433945A23788}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxesToAxesRotation", "AxesToAxesRotation\AxesToAxesRotation.csproj", "{B00E4B49-FD54-44BB-9819-A05AA0832A53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{73306ECD-6C67-4FA6-9259-433945A23788}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73306ECD-6C67-4FA6-9259-433945A23788}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73306ECD-6C67-4FA6-9259-433945A23788}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B00E4B49-FD54-44BB-9819-A05AA0832A53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B00E4B49-FD54-44BB-9819-A05AA0832A53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B00E4B49-FD54-44BB-9819-A05AA0832A53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B00E4B49-FD54-44BB-9819-A05AA0832A53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
