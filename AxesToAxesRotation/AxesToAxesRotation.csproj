@@ -39,8 +39,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="UCR.Core">
-      <HintPath>..\..\..\UCR\UCR.Core\bin\Debug\UCR.Core.dll</HintPath>
+    <Reference Include="UCR.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_Build\UCR.Core.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>

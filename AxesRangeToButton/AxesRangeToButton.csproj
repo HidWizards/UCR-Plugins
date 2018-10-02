@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="UCR.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\UCR\UCR.Core\bin\Debug\UCR.Core.dll</HintPath>
+      <HintPath>..\_Build\UCR.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

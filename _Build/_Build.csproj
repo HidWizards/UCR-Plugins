@@ -39,6 +39,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="UCR.Core">
+      <HintPath>..\..\..\UCR\UCR.Core\bin\Debug\UCR.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -47,5 +50,8 @@
   <PropertyGroup>
     <PreBuildEvent>if exist "$(SolutionDir)Artifacts" rmdir "$(SolutionDir)Artifacts" /s /q
 mkdir "$(SolutionDir)Artifacts"</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetDir)UCR.Core.dll" "$(ProjectDir)" /y</PostBuildEvent>
   </PropertyGroup>
 </Project>
