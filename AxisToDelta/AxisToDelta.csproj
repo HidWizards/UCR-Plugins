@@ -48,6 +48,12 @@
     <Compile Include="AxisToDelta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\_Build\_Build.csproj">
+      <Project>{3b55d2da-ab7b-461d-ab16-9d1f16b65c32}</Project>
+      <Name>_Build</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetDir)$(ProjectName).dll" "$(SolutionDir)Artifacts"</PostBuildEvent>

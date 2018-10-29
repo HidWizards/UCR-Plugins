@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxisToAxisCumulative", "Axi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_Build", "_Build\_Build.csproj", "{3B55D2DA-AB7B-461D-AB16-9D1F16B65C32}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventToButton", "EventToButton\EventToButton.csproj", "{1D42B268-6CF1-4591-AC5F-D147F6BE48C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{3B55D2DA-AB7B-461D-AB16-9D1F16B65C32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B55D2DA-AB7B-461D-AB16-9D1F16B65C32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B55D2DA-AB7B-461D-AB16-9D1F16B65C32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D42B268-6CF1-4591-AC5F-D147F6BE48C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D42B268-6CF1-4591-AC5F-D147F6BE48C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D42B268-6CF1-4591-AC5F-D147F6BE48C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D42B268-6CF1-4591-AC5F-D147F6BE48C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
