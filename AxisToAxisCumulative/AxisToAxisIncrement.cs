@@ -11,12 +11,12 @@ using HidWizards.UCR.Core.Models.Binding;
 using HidWizards.UCR.Core.Utilities;
 using HidWizards.UCR.Core.Utilities.AxisHelpers;
 
-namespace AxisToAxisCumulative
+namespace AxisToAxisIncrement
 {
-    [Plugin("Axis to Axis (Cumulative)")]
+    [Plugin("Axis to Axis Increment")]
     [PluginInput(DeviceBindingCategory.Range, "Axis")]
     [PluginOutput(DeviceBindingCategory.Range, "Axis")]
-    public class AxisToAxisCumulative : Plugin
+    public class AxisToAxisIncrement : Plugin
     {
         [PluginGui("Invert", ColumnOrder = 0)]
         public bool Invert { get; set; }
@@ -39,6 +39,9 @@ namespace AxisToAxisCumulative
         [PluginGui("Relative Sensitivity", ColumnOrder = 2, RowOrder = 2)]
         public decimal RelativeSensitivity { get; set; }
 
+        [PluginGui("Counter Effect", ColumnOrder = 3, RowOrder = 2)]
+        public double CounterEffect { get; set; }
+
         private readonly DeadZoneHelper _deadZoneHelper = new DeadZoneHelper();
         private readonly SensitivityHelper _sensitivityHelper = new SensitivityHelper();
 
@@ -48,12 +51,13 @@ namespace AxisToAxisCumulative
 
         private Thread _relativeThread;
 
-        public AxisToAxisCumulative()
+        public AxisToAxisIncrement()
         {
             DeadZone = 0;
             Sensitivity = 100;
             RelativeContinue = true;
             RelativeSensitivity = 2;
+            CounterEffect = 1.5;
             _relativeThread = new Thread(RelativeThread);
         }
 
@@ -64,7 +68,7 @@ namespace AxisToAxisCumulative
             if (Invert) value = Functions.Invert(value);
             if (DeadZone != 0) value = _deadZoneHelper.ApplyRangeDeadZone(value);
             if (Sensitivity != 100) value = _sensitivityHelper.ApplyRangeSensitivity(value);
-
+                    
             // Respect the axis min and max ranges.
             value = Math.Min(Math.Max(value, Constants.AxisMinValue), Constants.AxisMaxValue);
             _currentInputValue = value;
@@ -138,12 +142,21 @@ namespace AxisToAxisCumulative
             }
         }
 
+        long lastInputValue;
+
         private void RelativeUpdate()
         {
+            if (Math.Sign((double)_currentInputValue) != Math.Sign((double)_currentOutputValue) && Math.Abs(_currentInputValue) < Math.Abs(lastInputValue))
+            {
+                _currentInputValue *= (long)(CounterEffect);
+            }
+
             var value = (long)((_currentInputValue * (RelativeSensitivity / 100)) + _currentOutputValue);
+            
             value = Math.Min(Math.Max(value, Constants.AxisMinValue), Constants.AxisMaxValue);
             WriteOutput(0, value);
             _currentOutputValue = value;
+            lastInputValue = _currentInputValue;
         }
     }
 }

@@ -7,8 +7,8 @@
     <ProjectGuid>{71E08E57-7BD2-486F-B9B8-7B5D26FCC8C7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AxisToAxisCumulative</RootNamespace>
-    <AssemblyName>AxisToAxisCumulative</AssemblyName>
+    <RootNamespace>AxisToAxisIncrement</RootNamespace>
+    <AssemblyName>AxisToAxisIncrement</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -45,7 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AxisToAxisCumulative.cs" />
+    <Compile Include="AxisToAxisIncrement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
