@@ -30,7 +30,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ButtonToButtonsLongPress", 
 		{3B55D2DA-AB7B-461D-AB16-9D1F16B65C32} = {3B55D2DA-AB7B-461D-AB16-9D1F16B65C32}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxisToAxisCumulative", "AxisToAxisCumulative\AxisToAxisCumulative.csproj", "{71E08E57-7BD2-486F-B9B8-7B5D26FCC8C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxisToAxisIncrement", "AxisToAxisCumulative\AxisToAxisIncrement.csproj", "{71E08E57-7BD2-486F-B9B8-7B5D26FCC8C7}"
 	ProjectSection(ProjectDependencies) = postProject
 		{3B55D2DA-AB7B-461D-AB16-9D1F16B65C32} = {3B55D2DA-AB7B-461D-AB16-9D1F16B65C32}
 	EndProjectSection
