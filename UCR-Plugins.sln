@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_Build", "_Build\_Build.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventToButton", "EventToButton\EventToButton.csproj", "{1D42B268-6CF1-4591-AC5F-D147F6BE48C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ButtonsToAxisIncrement", "ButtonToAxisIncrement\ButtonsToAxisIncrement.csproj", "{AB521695-BA6F-406B-A02B-224B0AAF0D56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{1D42B268-6CF1-4591-AC5F-D147F6BE48C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D42B268-6CF1-4591-AC5F-D147F6BE48C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D42B268-6CF1-4591-AC5F-D147F6BE48C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB521695-BA6F-406B-A02B-224B0AAF0D56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB521695-BA6F-406B-A02B-224B0AAF0D56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB521695-BA6F-406B-A02B-224B0AAF0D56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB521695-BA6F-406B-A02B-224B0AAF0D56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
