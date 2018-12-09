@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Deprecated
 ### Removed
 ### Fixed
+- Each instance of ButtonToButtonsLongPress needs their own/private longPressTimer 
 
 ## [0.0.2] - 2018-10-29
 ### Added
