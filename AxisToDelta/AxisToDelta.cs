@@ -32,7 +32,7 @@ namespace AxisToDelta
         [PluginGui("Max", RowOrder = 1, ColumnOrder = 1)]
         public int Max { get; set; }
 
-        private static Timer _absoluteModeTimer;
+        private readonly Timer _absoluteModeTimer;
         private long _currentDelta;
         private float _scaleFactor;
         private readonly DeadZoneHelper _deadZoneHelper = new DeadZoneHelper();
@@ -72,7 +72,7 @@ namespace AxisToDelta
             }
         }
 
-        private static void SetAbsoluteTimerState(bool state)
+        private void SetAbsoluteTimerState(bool state)
         {
             if (state && !_absoluteModeTimer.Enabled)
             {

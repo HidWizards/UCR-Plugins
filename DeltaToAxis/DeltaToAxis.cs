@@ -33,7 +33,7 @@ namespace DeltaToAxis
         public int AbsoluteTimeout { get; set; }
 
         private long _currentValue;
-        private static Timer _absoluteModeTimer;
+        private readonly Timer _absoluteModeTimer;
 
         public DeltaToAxis()
         {

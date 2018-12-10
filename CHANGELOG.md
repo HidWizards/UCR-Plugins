@@ -7,12 +7,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 ### Changed 
-- Renamed AxisToAxisCumulative to AxisToAxisIncrement
-- Included a counter effect to AxisToAxisIncrement
 ### Deprecated
 ### Removed
 ### Fixed
-- Each instance of ButtonToButtonsLongPress needs their own/private longPressTimer 
+
+## [0.0.3] - 2018-10-29
+### Changed 
+- Renamed AxisToAxisCumulative to AxisToAxisIncrement
+- Included a counter effect to AxisToAxisIncrement
+### Fixed
+- Each instance of ButtonToButtonsLongPress uses their own/private longPressTimer 
+- Each instance of AxisToDelta needs uses own/private timer 
+- Each instance of DeltaToAxis needs uses own/private timer 
+
 
 ## [0.0.2] - 2018-10-29
 ### Added

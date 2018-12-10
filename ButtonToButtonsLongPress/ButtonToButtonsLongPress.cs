@@ -25,7 +25,7 @@ namespace ButtonToButtonsLongPress
         public int ShortPressDuration { get; set; }
 
         private bool _longHeld;
-        private Timer _longPressTimer;
+        private readonly Timer _longPressTimer;
 
         public ButtonToButtonsLongPress()
         {
