@@ -19,8 +19,8 @@ namespace AxesToAxesTrim
         private readonly DeadZoneHelper _deadZoneHelper = new DeadZoneHelper();
         private readonly SensitivityHelper _sensitivityHelper = new SensitivityHelper();
         private double _linearSenstitivityScaleFactor;
-        private long _trimX;
-        private long _trimY;
+        private short _trimX;
+        private short _trimY;
         private bool _trimValueTaken;
 
         [PluginGui("Invert X", ColumnOrder = 0)]
@@ -61,7 +61,7 @@ namespace AxesToAxesTrim
             _linearSenstitivityScaleFactor = ((double)Sensitivity / 100);
         }
 
-        public override void Update(params long[] values)
+        public override void Update(params short[] values)
         {
             if (values[3] == 1)
             {
@@ -82,7 +82,7 @@ namespace AxesToAxesTrim
             }
             else
             {
-                var outputValues = new long[] { values[0], values[1] };
+                var outputValues = new [] { values[0], values[1] };
                 if (values[2] == 0) _trimValueTaken = false;    // ToDo: This is clumsy, fix once we can get notification of *which* input changed state
                 if (DeadZone != 0)
                 {
@@ -101,8 +101,8 @@ namespace AxesToAxesTrim
                 {
                     if (Linear)
                     {
-                        outputValues[0] = (long)(outputValues[0] * _linearSenstitivityScaleFactor);
-                        outputValues[1] = (long)(outputValues[1] * _linearSenstitivityScaleFactor);
+                        outputValues[0] = (short)(outputValues[0] * _linearSenstitivityScaleFactor);
+                        outputValues[1] = (short)(outputValues[1] * _linearSenstitivityScaleFactor);
                     }
                     else
                     {

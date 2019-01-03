@@ -32,7 +32,7 @@ namespace DeltaToAxis
         [PluginGui("Absolute Timeout", ColumnOrder = 2, RowOrder = 1)]
         public int AbsoluteTimeout { get; set; }
 
-        private long _currentValue;
+        private short _currentValue;
         private readonly Timer _absoluteModeTimer;
 
         public DeltaToAxis()
@@ -52,13 +52,13 @@ namespace DeltaToAxis
             SetAbsoluteTimerState(false);
         }
 
-        public override void Update(params long[] values)
+        public override void Update(params short[] values)
         {
-            long value;
+            int wideValue;
             if (values[1] == 1 && ReadOutput(1) == 0)
             {
                 // Reset button pressed
-                value = 0;
+                wideValue = 0;
             }
             else
             {
@@ -66,15 +66,15 @@ namespace DeltaToAxis
                 if (Math.Abs(values[0]) < Deadzone) return;
                 if (AbsoluteMode)
                 {
-                    value = (long)(values[0] * AbsoluteSensitivity);
+                    wideValue = (int)(values[0] * AbsoluteSensitivity);
                     SetAbsoluteTimerState(true);
                 }
                 else
                 {
-                    value = _currentValue + (long)(values[0] * RelativeSensitivity);
+                    wideValue = _currentValue + (int)(values[0] * RelativeSensitivity);
                 }
-                value = Math.Min(Math.Max(value, Constants.AxisMinValue), Constants.AxisMaxValue);
             }
+            var value = Functions.ClampAxisRange(wideValue);
             _currentValue = value;
             WriteOutput(0, value);
         }

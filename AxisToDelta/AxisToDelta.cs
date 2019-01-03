@@ -33,7 +33,7 @@ namespace AxisToDelta
         public int Max { get; set; }
 
         private readonly Timer _absoluteModeTimer;
-        private long _currentDelta;
+        private short _currentDelta;
         private float _scaleFactor;
         private readonly DeadZoneHelper _deadZoneHelper = new DeadZoneHelper();
         private readonly SensitivityHelper _sensitivityHelper = new SensitivityHelper();
@@ -49,7 +49,7 @@ namespace AxisToDelta
         }
 
         #region Input Processing
-        public override void Update(params long[] values)
+        public override void Update(params short[] values)
         {
             var value = values[0];
             if (value != 0) value = _deadZoneHelper.ApplyRangeDeadZone(value);
@@ -66,7 +66,7 @@ namespace AxisToDelta
                 var sign = Math.Sign(value);
 
                 value = Functions.ClampAxisRange(value);
-                _currentDelta = (long)(Min + (Math.Abs(value) * _scaleFactor)) * sign;
+                _currentDelta = (short) ((Min + (Math.Abs(value) * _scaleFactor)) * sign);
                 //Debug.WriteLine($"New Delta: {_currentDelta}");
                 SetAbsoluteTimerState(true);
             }

@@ -19,7 +19,7 @@ namespace EventToButton
             HoldTime = 50;
         }
 
-        public override void Update(params long[] values)
+        public override void Update(params short[] values)
         {
             WriteOutput(0, 1);
             ThreadPool.QueueUserWorkItem(cb => Release());

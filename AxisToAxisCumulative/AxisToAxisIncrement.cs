@@ -45,8 +45,8 @@ namespace AxisToAxisIncrement
         private readonly DeadZoneHelper _deadZoneHelper = new DeadZoneHelper();
         private readonly SensitivityHelper _sensitivityHelper = new SensitivityHelper();
 
-        private long _currentOutputValue;
-        private long _currentInputValue;
+        private short _currentOutputValue;
+        private short _currentInputValue;
         private readonly object _threadLock = new object();
 
         private Thread _relativeThread;
@@ -61,7 +61,7 @@ namespace AxisToAxisIncrement
             _relativeThread = new Thread(RelativeThread);
         }
 
-        public override void Update(params long[] values)
+        public override void Update(params short[] values)
         {
             var value = values[0];
 
@@ -69,8 +69,6 @@ namespace AxisToAxisIncrement
             if (DeadZone != 0) value = _deadZoneHelper.ApplyRangeDeadZone(value);
             if (Sensitivity != 100) value = _sensitivityHelper.ApplyRangeSensitivity(value);
                     
-            // Respect the axis min and max ranges.
-            value = Math.Min(Math.Max(value, Constants.AxisMinValue), Constants.AxisMaxValue);
             _currentInputValue = value;
 
             if (RelativeContinue)
@@ -142,18 +140,18 @@ namespace AxisToAxisIncrement
             }
         }
 
-        long lastInputValue;
+        short lastInputValue;
 
         private void RelativeUpdate()
         {
             if (Math.Sign((double)_currentInputValue) != Math.Sign((double)_currentOutputValue) && Math.Abs(_currentInputValue) < Math.Abs(lastInputValue))
             {
-                _currentInputValue *= (long)(CounterEffect);
+                _currentInputValue *= (short)(CounterEffect);
             }
 
-            var value = (long)((_currentInputValue * (RelativeSensitivity / 100)) + _currentOutputValue);
-            
-            value = Math.Min(Math.Max(value, Constants.AxisMinValue), Constants.AxisMaxValue);
+            int wideValue = (int)(_currentInputValue * (RelativeSensitivity / 100) + _currentOutputValue);
+
+            var value = Functions.ClampAxisRange(wideValue);
             WriteOutput(0, value);
             _currentOutputValue = value;
             lastInputValue = _currentInputValue;

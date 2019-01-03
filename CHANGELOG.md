@@ -11,6 +11,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Removed
 ### Fixed
 
+##[0.0.4] - 2019-01-03
+### Changed
+- Update plugins to new UCR 0.7.0 format
+
 ## [0.0.3] - 2018-10-29
 ### Changed 
 - Renamed AxisToAxisCumulative to AxisToAxisIncrement

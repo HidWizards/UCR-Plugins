@@ -55,9 +55,9 @@ namespace AxesToAxesRotation
             _linearSenstitivityScaleFactor = ((double)Sensitivity / 100);
         }
 
-        public override void Update(params long[] values)
+        public override void Update(params short[] values)
         {
-            var outputValues = new long[] { values[0], values[1] };
+            var outputValues = new [] { values[0], values[1] };
             if (DeadZone != 0)
             {
                 if (CircularDz)
@@ -75,8 +75,8 @@ namespace AxesToAxesRotation
             {
                 if (Linear)
                 {
-                    outputValues[0] = (long)(outputValues[0] * _linearSenstitivityScaleFactor);
-                    outputValues[1] = (long)(outputValues[1] * _linearSenstitivityScaleFactor);
+                    outputValues[0] = (short)(outputValues[0] * _linearSenstitivityScaleFactor);
+                    outputValues[1] = (short)(outputValues[1] * _linearSenstitivityScaleFactor);
                 }
                 else
                 {
@@ -95,8 +95,8 @@ namespace AxesToAxesRotation
             {
                 var vector = new Vector(outputValues[0], outputValues[1]);
                 vector = vector.Rotate(Rotation);
-                outputValues[0] = (long)vector.X;
-                outputValues[1] = (long)vector.Y;
+                outputValues[0] = (short)vector.X;
+                outputValues[1] = (short)vector.Y;
             }
 
             WriteOutput(0, outputValues[0]);

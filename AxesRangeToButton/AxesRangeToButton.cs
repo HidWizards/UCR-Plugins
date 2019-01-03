@@ -29,11 +29,11 @@ namespace AxesRangeToButton
         [PluginGui("Y End %", RowOrder = 1, ColumnOrder = 3)]
         public double YEnd { get; set; }
 
-        private long _xStart;
-        private long _xEnd;
-        private long _yStart;
-        private long _yEnd;
-        private long _currentState;
+        private short _xStart;
+        private short _xEnd;
+        private short _yStart;
+        private short _yEnd;
+        private short _currentState;
 
         public AxesRangeToButton()
         {
@@ -45,20 +45,20 @@ namespace AxesRangeToButton
 
         private void Initialize()
         {
-            _xStart = Functions.ClampAxisRange((long)(XStart * 327.68));
-            _xEnd = Functions.ClampAxisRange((long)(XEnd * 327.68));
+            _xStart = Functions.ClampAxisRange((int)(XStart * 327.68));
+            _xEnd = Functions.ClampAxisRange((int)(XEnd * 327.68));
 
-            _yStart = Functions.ClampAxisRange((long)(YStart * 327.68));
-            _yEnd = Functions.ClampAxisRange((long)(YEnd * 327.68));
+            _yStart = Functions.ClampAxisRange((int)(YStart * 327.68));
+            _yEnd = Functions.ClampAxisRange((int)(YEnd * 327.68));
         }
 
-        public override void Update(params long[] values)
+        public override void Update(params short[] values)
         {
 
             if (InvertX) values[0] = Functions.Invert(values[0]);
             if (InvertY) values[1] = Functions.Invert(values[1]);
 
-            long newState;
+            short newState;
             if (values[0] >= _xStart && values[0] <= _xEnd && values[1] >= _yStart && values[1] <= _yEnd)
             {
                 newState = 1;
