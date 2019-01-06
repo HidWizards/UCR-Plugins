@@ -53,6 +53,7 @@ mkdir "$(SolutionDir)Artifacts"</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetDir)UCR.Core.dll" "$(ProjectDir)" /y
-copy "$(SolutionDir)CHANGELOG.md" "$(SolutionDir)Artifacts"</PostBuildEvent>
+copy "$(SolutionDir)CHANGELOG.md" "$(SolutionDir)Artifacts"
+copy "$(SolutionDir)Unblocker.ps1" "$(SolutionDir)Artifacts"</PostBuildEvent>
   </PropertyGroup>
 </Project>
