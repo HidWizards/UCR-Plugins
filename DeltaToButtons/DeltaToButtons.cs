@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Timers;
 using HidWizards.UCR.Core.Attributes;
 using HidWizards.UCR.Core.Models;
@@ -19,35 +20,45 @@ namespace DeltaToButtons
         public int Min { get; set; }
 
         [PluginGui("Center Timeout", ColumnOrder = 1, RowOrder = 0)]
-        public int CenterTimeout { get; set; }
+        public int CenterTimeout
+        {
+            get => _centerTimeout;
+            set
+            {
+                _centerTimeout = value;
+                _centerHandler.SetTime(_centerTimeout);
+            }
+        }
+
+        private int _centerTimeout;
 
         [PluginGui("DeBounce Time", ColumnOrder = 2, RowOrder = 0)]
         public int DeBounceTimeout { get; set; }
 
-        private readonly Timer _centerTimer;
-        private Thread _debounceThread;
         private int _stateChangeTimeout = int.MaxValue;
         private int _nextState = 0;
+        private readonly PeriodicAction _debounceHandler;
+        private readonly TimeoutAction _centerHandler;
 
         public DeltaToButtons()
         {
+            _debounceHandler = new PeriodicAction(DeBounceTask, TimeSpan.FromMilliseconds(10));
+            _centerHandler = new TimeoutAction(CenterTimerElapsed);
             Min = 0;
             CenterTimeout = 100;
             DeBounceTimeout = 100;
-            _centerTimer = new Timer();
-            _centerTimer.Elapsed += CenterTimerElapsed;
         }
 
-        private void CenterTimerElapsed(object sender, ElapsedEventArgs e)
+        private void CenterTimerElapsed()
         {
             SetOutputState(0);
-            SetCenterTimerState(false);
+            _centerHandler.SetState(false);
         }
 
         public override void Update(params short[] values)
         {
             if (Math.Abs(values[0]) < Min) return;
-            SetCenterTimerState(true);
+            _centerHandler.SetState(true);
             if (values[0] > 0)
             {
                 SetOutputState(1);
@@ -58,34 +69,15 @@ namespace DeltaToButtons
             }
         }
 
-        public void SetCenterTimerState(bool state)
-        {
-            if (state)
-            {
-                if (_centerTimer.Enabled)
-                {
-                    _centerTimer.Stop();
-                }
-                _centerTimer.Interval = CenterTimeout;
-                _centerTimer.Start();
-            }
-            else if (_centerTimer.Enabled)
-            {
-                _centerTimer.Stop();
-            }
-        }
-
         public override void OnActivate()
         {
-            _debounceThread = new Thread(DeBounceThread);
-            _debounceThread.Start();
+            _debounceHandler.SetState(true);
         }
 
         public override void OnDeactivate()
         {
-            SetCenterTimerState(false);
-            _debounceThread.Abort();
-            _debounceThread.Join();
+            _centerHandler.SetState(false);
+            _debounceHandler.SetState(false);
         }
 
         private void SetOutputState(int state)
@@ -118,15 +110,112 @@ namespace DeltaToButtons
             _stateChangeTimeout = int.MaxValue;
         }
 
-        private void DeBounceThread()
+        private void DeBounceTask()
         {
-            while (true)
+            if (Environment.TickCount > _stateChangeTimeout)
             {
-                if (Environment.TickCount > _stateChangeTimeout)
+                WriteOutput(_nextState);
+            }
+        }
+    }
+
+    public class TimeoutAction : IDisposable
+    {
+        private readonly Timer _timer;
+        private int _period;
+        private readonly Action _action;
+
+        public TimeoutAction(Action action, int timeout = 10)
+        {
+            _action = action;
+            _period = timeout;
+            _timer = new Timer { Interval = _period };
+            _timer.Elapsed += OnElapsed;
+        }
+
+        public TimeoutAction SetState(bool state)
+        {
+            if (state)
+            {
+                if (_timer.Enabled)
                 {
-                    WriteOutput(_nextState);
+                    _timer.Stop();
                 }
-                Thread.Sleep(10);
+                _timer.Start();
+            }
+            else if (_timer.Enabled)
+            {
+                _timer.Stop();
+            }
+
+            return this;
+        }
+
+        public void SetTime(int timeout)
+        {
+            if (timeout == _period) return;
+            var timerWasRunning = _timer.Enabled;
+            if (timerWasRunning)
+                SetState(false);
+            _period = timeout;
+            _timer.Interval = _period;
+            if (timerWasRunning)
+                SetState(true);
+        }
+
+        public void Dispose()
+        {
+            SetState(false);
+        }
+
+        private void OnElapsed(object sender, ElapsedEventArgs e)
+        {
+            _action();
+        }
+    }
+
+    public class PeriodicAction : IDisposable
+    {
+        private readonly Action _action;
+        private readonly TimeSpan _period;
+        private CancellationTokenSource _cancellationTokenSource;
+        private Task _task;
+
+        public PeriodicAction(Action action, TimeSpan period)
+        {
+            _action = action;
+            _period = period;
+        }
+
+        public PeriodicAction SetState(bool state)
+        {
+            if (_task != null)
+            {
+                _cancellationTokenSource.Cancel();
+                _task = null;
+            }
+            if (state)
+            {
+                _task = AsyncStart();
+            }
+
+            return this;
+        }
+
+        public void Dispose()
+        {
+            SetState(false);
+        }
+
+        private async Task AsyncStart()
+        {
+            _cancellationTokenSource = new CancellationTokenSource();
+            while (!_cancellationTokenSource.Token.IsCancellationRequested)
+            {
+                await Task.Delay(_period, _cancellationTokenSource.Token);
+
+                if (!_cancellationTokenSource.Token.IsCancellationRequested)
+                    _action();
             }
         }
     }
