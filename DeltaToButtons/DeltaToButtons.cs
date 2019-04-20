@@ -33,26 +33,38 @@ namespace DeltaToButtons
         private int _centerTimeout;
 
         [PluginGui("DeBounce Time", ColumnOrder = 2, RowOrder = 0)]
-        public int DeBounceTimeout { get; set; }
+        public int DeBounceTimeout
+        {
+            get => _debounceTimeout;
+            set
+            {
+                _debounceTimeout = value;
+                _debounceHandler.SetTime(_debounceTimeout);
+            }
+        }
 
-        private int _stateChangeTimeout = int.MaxValue;
+        private int _debounceTimeout;
         private int _nextState = 0;
-        private readonly PeriodicAction _debounceHandler;
         private readonly TimeoutAction _centerHandler;
+        private readonly TimeoutAction _debounceHandler;
 
         public DeltaToButtons()
         {
-            _debounceHandler = new PeriodicAction(DeBounceTask, TimeSpan.FromMilliseconds(10));
-            _centerHandler = new TimeoutAction(CenterTimerElapsed);
+            _debounceHandler = new TimeoutAction(OnDebounceTimeout);
+            _centerHandler = new TimeoutAction(OnCenterTimeout);
             Min = 0;
             CenterTimeout = 100;
             DeBounceTimeout = 100;
         }
 
-        private void CenterTimerElapsed()
+        private void OnCenterTimeout()
         {
             SetOutputState(0);
-            _centerHandler.SetState(false);
+        }
+
+        private void OnDebounceTimeout()
+        {
+            WriteOutput(_nextState);
         }
 
         public override void Update(params short[] values)
@@ -82,11 +94,9 @@ namespace DeltaToButtons
 
         private void SetOutputState(int state)
         {
-            if (state != _nextState)
-            {
-                _stateChangeTimeout = Environment.TickCount + DeBounceTimeout;
-                _nextState = state;
-            }
+            if (state == _nextState) return;
+            _nextState = state;
+            _debounceHandler.SetState(true);
         }
 
         private void WriteOutput(int state)
@@ -107,15 +117,6 @@ namespace DeltaToButtons
                 WriteOutput(1, 0);
             }
 
-            _stateChangeTimeout = int.MaxValue;
-        }
-
-        private void DeBounceTask()
-        {
-            if (Environment.TickCount > _stateChangeTimeout)
-            {
-                WriteOutput(_nextState);
-            }
         }
     }
 
@@ -170,6 +171,7 @@ namespace DeltaToButtons
 
         private void OnElapsed(object sender, ElapsedEventArgs e)
         {
+            SetState(false);
             _action();
         }
     }
