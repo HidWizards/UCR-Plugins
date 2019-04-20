@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Threading;
 using System.Timers;
 using HidWizards.UCR.Core.Attributes;
 using HidWizards.UCR.Core.Models;
 using HidWizards.UCR.Core.Models.Binding;
 using HidWizards.UCR.Core.Utilities;
+using Timer = System.Timers.Timer;
 
 namespace DeltaToButtons
 {
@@ -17,61 +19,115 @@ namespace DeltaToButtons
         public int Min { get; set; }
 
         [PluginGui("Center Timeout", ColumnOrder = 1, RowOrder = 0)]
-        public int AbsoluteTimeout { get; set; }
+        public int CenterTimeout { get; set; }
 
-        private readonly Timer _absoluteModeTimer;
+        [PluginGui("DeBounce Time", ColumnOrder = 2, RowOrder = 0)]
+        public int DeBounceTimeout { get; set; }
+
+        private readonly Timer _centerTimer;
+        private Thread _debounceThread;
+        private int _stateChangeTimeout = int.MaxValue;
+        private int _nextState = 0;
 
         public DeltaToButtons()
         {
             Min = 0;
-            AbsoluteTimeout = 100;
-            _absoluteModeTimer = new Timer();
-            _absoluteModeTimer.Elapsed += AbsoluteModeTimerElapsed;
+            CenterTimeout = 100;
+            DeBounceTimeout = 100;
+            _centerTimer = new Timer();
+            _centerTimer.Elapsed += CenterTimerElapsed;
         }
 
-        private void AbsoluteModeTimerElapsed(object sender, ElapsedEventArgs e)
+        private void CenterTimerElapsed(object sender, ElapsedEventArgs e)
         {
-            WriteOutput(0, 0);
-            WriteOutput(1, 0);
-            SetAbsoluteTimerState(false);
+            SetOutputState(0);
+            SetCenterTimerState(false);
         }
 
         public override void Update(params short[] values)
         {
             if (Math.Abs(values[0]) < Min) return;
-            SetAbsoluteTimerState(true);
+            SetCenterTimerState(true);
             if (values[0] > 0)
             {
-                WriteOutput(0, 0);
-                WriteOutput(1, 1);
+                SetOutputState(1);
             }
             else if (values[0] < 0)
             {
-                WriteOutput(1, 0);
-                WriteOutput(0, 1);
+                SetOutputState(-1);
             }
         }
 
-        public void SetAbsoluteTimerState(bool state)
+        public void SetCenterTimerState(bool state)
         {
             if (state)
             {
-                if (_absoluteModeTimer.Enabled)
+                if (_centerTimer.Enabled)
                 {
-                    _absoluteModeTimer.Stop();
+                    _centerTimer.Stop();
                 }
-                _absoluteModeTimer.Interval = AbsoluteTimeout;
-                _absoluteModeTimer.Start();
+                _centerTimer.Interval = CenterTimeout;
+                _centerTimer.Start();
             }
-            else if (_absoluteModeTimer.Enabled)
+            else if (_centerTimer.Enabled)
             {
-                _absoluteModeTimer.Stop();
+                _centerTimer.Stop();
             }
+        }
+
+        public override void OnActivate()
+        {
+            _debounceThread = new Thread(DeBounceThread);
+            _debounceThread.Start();
         }
 
         public override void OnDeactivate()
         {
-            SetAbsoluteTimerState(false);
+            SetCenterTimerState(false);
+            _debounceThread.Abort();
+            _debounceThread.Join();
+        }
+
+        private void SetOutputState(int state)
+        {
+            if (state != _nextState)
+            {
+                _stateChangeTimeout = Environment.TickCount + DeBounceTimeout;
+                _nextState = state;
+            }
+        }
+
+        private void WriteOutput(int state)
+        {
+            if (state > 0)
+            {
+                WriteOutput(0, 0);
+                WriteOutput(1, 1);
+            }
+            else if (state < 0)
+            {
+                WriteOutput(1, 0);
+                WriteOutput(0, 1);
+            }
+            else
+            {
+                WriteOutput(0, 0);
+                WriteOutput(1, 0);
+            }
+
+            _stateChangeTimeout = int.MaxValue;
+        }
+
+        private void DeBounceThread()
+        {
+            while (true)
+            {
+                if (Environment.TickCount > _stateChangeTimeout)
+                {
+                    WriteOutput(_nextState);
+                }
+                Thread.Sleep(10);
+            }
         }
     }
 }
