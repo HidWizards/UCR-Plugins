@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Deprecated
 ### Removed
 ### Fixed
+- Fixed Reset for DeltaToAxis Relative mode
 
 ##[0.0.4] - 2019-01-03
 ### Changed

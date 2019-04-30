@@ -55,7 +55,7 @@ namespace DeltaToAxis
         public override void Update(params short[] values)
         {
             int wideValue;
-            if (values[1] == 1 && ReadOutput(1) == 0)
+            if (!AbsoluteMode && values[1] == 1)
             {
                 // Reset button pressed
                 wideValue = 0;
