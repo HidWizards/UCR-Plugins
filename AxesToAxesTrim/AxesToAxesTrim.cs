@@ -6,7 +6,7 @@ using HidWizards.UCR.Core.Utilities.AxisHelpers;
 
 namespace AxesToAxesTrim
 {
-    [Plugin("Axes to Axes (Trim)")]
+    [Plugin("Axes to Axes (Trim)", Group = "Axis", Description = "Remap two axes to two axes, and trim them when a button is held")]
     [PluginInput(DeviceBindingCategory.Range, "X Axis")]
     [PluginInput(DeviceBindingCategory.Range, "Y Axis")]
     [PluginInput(DeviceBindingCategory.Momentary, "Trim")]
@@ -23,22 +23,22 @@ namespace AxesToAxesTrim
         private short _trimY;
         private bool _trimValueTaken;
 
-        [PluginGui("Invert X", ColumnOrder = 0)]
+        [PluginGui("Invert X")]
         public bool InvertX { get; set; }
 
-        [PluginGui("Invert Y", ColumnOrder = 1)]
+        [PluginGui("Invert Y")]
         public bool InvertY { get; set; }
 
-        [PluginGui("Sensitivity", ColumnOrder = 2)]
+        [PluginGui("Sensitivity")]
         public int Sensitivity { get; set; }
 
-        [PluginGui("Linear", RowOrder = 0, ColumnOrder = 2)]
+        [PluginGui("Linear")]
         public bool Linear { get; set; }
 
-        [PluginGui("Dead zone", RowOrder = 1, ColumnOrder = 0)]
+        [PluginGui("Dead zone")]
         public int DeadZone { get; set; }
 
-        [PluginGui("Circular", RowOrder = 1, ColumnOrder = 2)]
+        [PluginGui("Circular")]
         public bool CircularDz { get; set; }
 
 

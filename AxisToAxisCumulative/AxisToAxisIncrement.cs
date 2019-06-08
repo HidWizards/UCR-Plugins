@@ -13,33 +13,33 @@ using HidWizards.UCR.Core.Utilities.AxisHelpers;
 
 namespace AxisToAxisIncrement
 {
-    [Plugin("Axis to Axis Increment")]
+    [Plugin("Axis to Axis Increment", Group = "Axis", Description = "Remap an axis to an axis, but in an \"incremental\" way")]
     [PluginInput(DeviceBindingCategory.Range, "Axis")]
     [PluginOutput(DeviceBindingCategory.Range, "Axis")]
     public class AxisToAxisIncrement : Plugin
     {
-        [PluginGui("Invert", ColumnOrder = 0)]
+        [PluginGui("Invert")]
         public bool Invert { get; set; }
 
-        [PluginGui("Linear", ColumnOrder = 3)]
+        [PluginGui("Linear")]
         public bool Linear { get; set; }
 
-        [PluginGui("Dead zone", ColumnOrder = 1)]
+        [PluginGui("Dead zone")]
         public int DeadZone { get; set; }
 
-        [PluginGui("Sensitivity", ColumnOrder = 2)]
+        [PluginGui("Sensitivity")]
         public int Sensitivity { get; set; }
 
         /// <summary>
         /// To constantly add current axis values to the output - WORK IN PROGRESS!!!
         /// </summary>
-        [PluginGui("Relative Continue", ColumnOrder = 1, RowOrder = 2)]
+        [PluginGui("Relative Continue")]
         public bool RelativeContinue { get; set; }
 
-        [PluginGui("Relative Sensitivity", ColumnOrder = 2, RowOrder = 2)]
+        [PluginGui("Relative Sensitivity")]
         public decimal RelativeSensitivity { get; set; }
 
-        [PluginGui("Counter Effect", ColumnOrder = 3, RowOrder = 2)]
+        [PluginGui("Counter Effect")]
         public double CounterEffect { get; set; }
 
         private readonly DeadZoneHelper _deadZoneHelper = new DeadZoneHelper();

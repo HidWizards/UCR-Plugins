@@ -9,27 +9,27 @@ using HidWizards.UCR.Core.Models;
 using HidWizards.UCR.Core.Models.Binding;
 using HidWizards.UCR.Core.Utilities;
 
-namespace DeltaToAxis
+namespace HidWizards.UCR.Plugins.Remapper
 {
-    [Plugin("Delta to Axis")]
+    [Plugin("Delta to Axis", Group = "Delta", Description = "Remaps a mouse axis to a joystick axis")]
     [PluginInput(DeviceBindingCategory.Delta, "Delta")]
     [PluginInput(DeviceBindingCategory.Momentary, "Reset")]
     [PluginOutput(DeviceBindingCategory.Range, "Axis")]
     public class DeltaToAxis : Plugin
     {
-        [PluginGui("Deadzone", ColumnOrder = 0, RowOrder = 0)]
+        [PluginGui("Deadzone")]
         public int Deadzone { get; set; }
 
-        [PluginGui("Relative Sensitivity", ColumnOrder = 1, RowOrder = 0)]
+        [PluginGui("Relative Sensitivity")]
         public double RelativeSensitivity { get; set; }
 
-        [PluginGui("Absolute Mode", ColumnOrder = 0, RowOrder = 1)]
+        [PluginGui("Absolute Mode")]
         public bool AbsoluteMode { get; set; }
 
-        [PluginGui("Absolute Sensitivity", ColumnOrder = 1, RowOrder = 1)]
+        [PluginGui("Absolute Sensitivity")]
         public double AbsoluteSensitivity { get; set; }
 
-        [PluginGui("Absolute Timeout", ColumnOrder = 2, RowOrder = 1)]
+        [PluginGui("Absolute Timeout")]
         public int AbsoluteTimeout { get; set; }
 
         private short _currentValue;

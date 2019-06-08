@@ -5,28 +5,28 @@ using HidWizards.UCR.Core.Utilities;
 
 namespace AxesRangeToButton
 {
-    [Plugin("Axes Range to Button")]
-    [PluginInput(DeviceBindingCategory.Range, "X Axis")]
-    [PluginInput(DeviceBindingCategory.Range, "Y Axis")]
+    [Plugin("Axes Range to Button", Group = "Axis", Description = "Presses a button when two axes are within a specific range")]
+    [PluginInput(DeviceBindingCategory.Range, "Axis 1")]
+    [PluginInput(DeviceBindingCategory.Range, "Axis 2")]
     [PluginOutput(DeviceBindingCategory.Momentary, "Button")]
     public class AxesRangeToButton : Plugin
     {
-        [PluginGui("Invert X", ColumnOrder = 0)]
+        [PluginGui("Invert X")]
         public bool InvertX { get; set; }
 
-        [PluginGui("Invert Y", ColumnOrder = 1)]
+        [PluginGui("Invert Y")]
         public bool InvertY { get; set; }
 
-        [PluginGui("X Start %", RowOrder = 1, ColumnOrder = 0)]
+        [PluginGui("X Start %")]
         public double XStart { get; set; }
 
-        [PluginGui("X End %", RowOrder = 1, ColumnOrder = 1)]
+        [PluginGui("X End %")]
         public double XEnd { get; set; }
 
-        [PluginGui("Y Start %", RowOrder = 1, ColumnOrder = 2)]
+        [PluginGui("Y Start %")]
         public double YStart { get; set; }
 
-        [PluginGui("Y End %", RowOrder = 1, ColumnOrder = 3)]
+        [PluginGui("Y End %")]
         public double YEnd { get; set; }
 
         private short _xStart;

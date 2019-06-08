@@ -12,16 +12,16 @@ using Timer = System.Timers.Timer;
 
 namespace ButtonToButtonsLongPress
 {
-    [Plugin("Button to Buttons (Long Press)")]
+    [Plugin("Button to Buttons (Long Press)", Group = "Button", Description = "Remap one button to two buttons\nOne is fired on short press, the other on long press")]
     [PluginInput(DeviceBindingCategory.Momentary, "Button")]
     [PluginOutput(DeviceBindingCategory.Momentary, "Button (Short)")]
     [PluginOutput(DeviceBindingCategory.Momentary, "Button (Long)")]
     public class ButtonToButtonsLongPress : Plugin
     {
-        [PluginGui("Timeout", ColumnOrder = 0, RowOrder = 0)]
+        [PluginGui("Timeout")]
         public int Timeout { get; set; }
 
-        [PluginGui("Short Press Duration", ColumnOrder = 0, RowOrder = 0)]
+        [PluginGui("Short Press Duration")]
         public int ShortPressDuration { get; set; }
 
         private bool _longHeld;

@@ -12,24 +12,24 @@ using HidWizards.UCR.Core.Utilities.AxisHelpers;
 
 namespace AxisToDelta
 {
-    [Plugin("Axis to Delta")]
+    [Plugin("Axis to Delta", Group = "Delta", Description = "Remaps a joystick axis to a mouse axis")]
     [PluginInput(DeviceBindingCategory.Range, "Axis")]
     [PluginOutput(DeviceBindingCategory.Delta, "Delta")]
     public class AxisToDelta : Plugin
     {
-        [PluginGui("Invert", RowOrder = 0, ColumnOrder = 0)]
+        [PluginGui("Invert")]
         public bool Invert { get; set; }
 
-        [PluginGui("Dead zone", RowOrder = 0, ColumnOrder = 1)]
+        [PluginGui("Dead zone")]
         public int DeadZone { get; set; }
 
-        [PluginGui("Sensitivity", RowOrder = 0, ColumnOrder = 2)]
+        [PluginGui("Input Sensitivity %")]
         public int Sensitivity { get; set; }
 
-        [PluginGui("Min", RowOrder = 1, ColumnOrder = 0)]
+        [PluginGui("Min mouse delta move")]
         public int Min { get; set; }
 
-        [PluginGui("Max", RowOrder = 1, ColumnOrder = 1)]
+        [PluginGui("Max mouse delta move")]
         public int Max { get; set; }
 
         private readonly Timer _absoluteModeTimer;

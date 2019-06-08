@@ -9,19 +9,19 @@ using Timer = System.Timers.Timer;
 
 namespace DeltaToButtons
 {
-    [Plugin("Delta to Buttons")]
+    [Plugin("Delta to Buttons", Group = "Delta", Description = "Remaps a mouse axis to two buttons")]
     [PluginInput(DeviceBindingCategory.Delta, "Delta")]
     [PluginOutput(DeviceBindingCategory.Momentary, "Button Low")]
     [PluginOutput(DeviceBindingCategory.Momentary, "Button High")]
     public class DeltaToButtons : Plugin
     {
-        [PluginGui("Min", ColumnOrder = 0, RowOrder = 0)]
+        [PluginGui("Min")]
         public int Min { get; set; }
 
-        [PluginGui("Center Timeout", ColumnOrder = 1, RowOrder = 0)]
+        [PluginGui("Center Timeout")]
         public int CenterTimeout { get; set; }
 
-        [PluginGui("DeBounce Time", ColumnOrder = 2, RowOrder = 0)]
+        [PluginGui("DeBounce Time")]
         public int DeBounceTimeout { get; set; }
 
         private readonly Timer _centerTimer;

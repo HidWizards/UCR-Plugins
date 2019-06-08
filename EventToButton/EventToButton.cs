@@ -5,13 +5,13 @@ using HidWizards.UCR.Core.Models.Binding;
 
 namespace EventToButton
 {
-    [Plugin("Event to Button")]
+    [Plugin("Event to Button", Group = "Event", Description = "Remaps an event type (eg Mouse Wheel) to a button")]
     [PluginInput(DeviceBindingCategory.Event, "Button")]
     [PluginOutput(DeviceBindingCategory.Momentary, "Button")]
     public class EventToButton : Plugin
     {
 
-        [PluginGui("Hold Time", ColumnOrder = 0, RowOrder = 0)]
+        [PluginGui("Hold Time")]
         public int HoldTime { get; set; }
 
         public EventToButton()
