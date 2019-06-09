@@ -16,30 +16,32 @@ namespace AxisToAxisIncrement
     [Plugin("Axis to Axis Increment", Group = "Axis", Description = "Remap an axis to an axis, but in an \"incremental\" way")]
     [PluginInput(DeviceBindingCategory.Range, "Axis")]
     [PluginOutput(DeviceBindingCategory.Range, "Axis")]
+    [PluginSettingsGroup("Relative Mode", Group = "Relative")]
+    [PluginSettingsGroup("Absolute Mode", Group = "Absolute")]
     public class AxisToAxisIncrement : Plugin
     {
         [PluginGui("Invert")]
         public bool Invert { get; set; }
 
-        [PluginGui("Linear")]
+        [PluginGui("Linear deadzone")]
         public bool Linear { get; set; }
 
-        [PluginGui("Dead zone")]
+        [PluginGui("Dead zone %")]
         public int DeadZone { get; set; }
 
-        [PluginGui("Sensitivity")]
+        [PluginGui("Input Sensitivity %")]
         public int Sensitivity { get; set; }
 
         /// <summary>
         /// To constantly add current axis values to the output - WORK IN PROGRESS!!!
         /// </summary>
-        [PluginGui("Relative Continue")]
+        [PluginGui("Continue Mode", Group = "Relative")]
         public bool RelativeContinue { get; set; }
 
-        [PluginGui("Relative Sensitivity")]
+        [PluginGui("Sensitivity %", Group = "Relative")]
         public decimal RelativeSensitivity { get; set; }
 
-        [PluginGui("Counter Effect")]
+        [PluginGui("Counter Effect", Group = "Relative")]
         public double CounterEffect { get; set; }
 
         private readonly DeadZoneHelper _deadZoneHelper = new DeadZoneHelper();

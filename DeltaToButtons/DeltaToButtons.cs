@@ -15,13 +15,13 @@ namespace DeltaToButtons
     [PluginOutput(DeviceBindingCategory.Momentary, "Button High")]
     public class DeltaToButtons : Plugin
     {
-        [PluginGui("Min")]
+        [PluginGui("Min (-32768...32767)")]
         public int Min { get; set; }
 
-        [PluginGui("Center Timeout")]
+        [PluginGui("Center Timeout in ms")]
         public int CenterTimeout { get; set; }
 
-        [PluginGui("DeBounce Time")]
+        [PluginGui("DeBounce Time in ms")]
         public int DeBounceTimeout { get; set; }
 
         private readonly Timer _centerTimer;

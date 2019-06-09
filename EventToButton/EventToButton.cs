@@ -11,7 +11,7 @@ namespace EventToButton
     public class EventToButton : Plugin
     {
 
-        [PluginGui("Hold Time")]
+        [PluginGui("Hold Time in ms")]
         public int HoldTime { get; set; }
 
         public EventToButton()

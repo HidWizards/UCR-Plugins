@@ -29,16 +29,16 @@ namespace AxesToAxesTrim
         [PluginGui("Invert Y")]
         public bool InvertY { get; set; }
 
-        [PluginGui("Sensitivity")]
+        [PluginGui("Sensitivity %")]
         public int Sensitivity { get; set; }
 
-        [PluginGui("Linear")]
+        [PluginGui("Linear sensitivity")]
         public bool Linear { get; set; }
 
-        [PluginGui("Dead zone")]
+        [PluginGui("Dead zone %")]
         public int DeadZone { get; set; }
 
-        [PluginGui("Circular")]
+        [PluginGui("Circular deadzone")]
         public bool CircularDz { get; set; }
 
 

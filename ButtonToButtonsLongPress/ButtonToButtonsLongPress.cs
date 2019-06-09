@@ -18,10 +18,10 @@ namespace ButtonToButtonsLongPress
     [PluginOutput(DeviceBindingCategory.Momentary, "Button (Long)")]
     public class ButtonToButtonsLongPress : Plugin
     {
-        [PluginGui("Timeout")]
+        [PluginGui("Timeout in ms")]
         public int Timeout { get; set; }
 
-        [PluginGui("Short Press Duration")]
+        [PluginGui("Short Press Duration in ms")]
         public int ShortPressDuration { get; set; }
 
         private bool _longHeld;

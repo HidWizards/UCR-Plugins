@@ -15,21 +15,23 @@ namespace HidWizards.UCR.Plugins.Remapper
     [PluginInput(DeviceBindingCategory.Delta, "Delta")]
     [PluginInput(DeviceBindingCategory.Momentary, "Reset")]
     [PluginOutput(DeviceBindingCategory.Range, "Axis")]
+    [PluginSettingsGroup("Relative Mode", Group = "Relative")]
+    [PluginSettingsGroup("Absolute Mode", Group = "Absolute")]
     public class DeltaToAxis : Plugin
     {
-        [PluginGui("Deadzone")]
+        [PluginGui("Deadzone %")]
         public int Deadzone { get; set; }
-
-        [PluginGui("Relative Sensitivity")]
-        public double RelativeSensitivity { get; set; }
 
         [PluginGui("Absolute Mode")]
         public bool AbsoluteMode { get; set; }
 
-        [PluginGui("Absolute Sensitivity")]
+        [PluginGui("Sensitivity (multiplier)", Group = "Relative")]
+        public double RelativeSensitivity { get; set; }
+
+        [PluginGui("Sensitivity (multiplier)", Group = "Absolute")]
         public double AbsoluteSensitivity { get; set; }
 
-        [PluginGui("Absolute Timeout")]
+        [PluginGui("Timeout in ms", Group = "Absolute")]
         public int AbsoluteTimeout { get; set; }
 
         private short _currentValue;

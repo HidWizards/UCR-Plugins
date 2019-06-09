@@ -29,7 +29,7 @@ namespace AxesToAxesRotation
         [PluginGui("Sensitivity %")]
         public int Sensitivity { get; set; }
 
-        [PluginGui("Linear")]
+        [PluginGui("Linear Sensitivity")]
         public bool Linear { get; set; }
 
         [PluginGui("Dead zone %")]
