@@ -19,11 +19,13 @@ namespace HidWizards.UCR.Plugins.Remapper
     [PluginSettingsGroup("Absolute Mode", Group = "Absolute")]
     public class DeltaToAxis : Plugin
     {
+        public enum Modes { Absolute, Relative } ;
+
         [PluginGui("Deadzone %")]
         public int Deadzone { get; set; }
 
-        [PluginGui("Absolute Mode")]
-        public bool AbsoluteMode { get; set; }
+        [PluginGui("Mode")]
+        public Modes Mode { get; set; }
 
         [PluginGui("Sensitivity (multiplier)", Group = "Relative")]
         public double RelativeSensitivity { get; set; }
@@ -39,7 +41,6 @@ namespace HidWizards.UCR.Plugins.Remapper
 
         public DeltaToAxis()
         {
-            AbsoluteMode = false;
             Deadzone = 0;
             RelativeSensitivity = 100;
             AbsoluteSensitivity = 10000;
@@ -57,7 +58,7 @@ namespace HidWizards.UCR.Plugins.Remapper
         public override void Update(params short[] values)
         {
             int wideValue;
-            if (!AbsoluteMode && values[1] == 1)
+            if (Mode == Modes.Relative && values[1] == 1)
             {
                 // Reset button pressed
                 wideValue = 0;
@@ -66,7 +67,7 @@ namespace HidWizards.UCR.Plugins.Remapper
             {
                 // Normal operation
                 if (Math.Abs(values[0]) < Deadzone) return;
-                if (AbsoluteMode)
+                if (Mode == Modes.Absolute)
                 {
                     wideValue = (int)(values[0] * AbsoluteSensitivity);
                     SetAbsoluteTimerState(true);
