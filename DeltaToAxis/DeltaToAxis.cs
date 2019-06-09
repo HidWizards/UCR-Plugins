@@ -15,8 +15,7 @@ namespace HidWizards.UCR.Plugins.Remapper
     [PluginInput(DeviceBindingCategory.Delta, "Delta")]
     [PluginInput(DeviceBindingCategory.Momentary, "Reset")]
     [PluginOutput(DeviceBindingCategory.Range, "Axis")]
-    [PluginSettingsGroup("Relative Mode", Group = "Relative")]
-    [PluginSettingsGroup("Absolute Mode", Group = "Absolute")]
+    [PluginSettingsGroup("Absolute Mode Settings", Group = "Absolute")]
     public class DeltaToAxis : Plugin
     {
         public enum Modes { Absolute, Relative } ;
@@ -27,11 +26,8 @@ namespace HidWizards.UCR.Plugins.Remapper
         [PluginGui("Mode")]
         public Modes Mode { get; set; }
 
-        [PluginGui("Sensitivity (multiplier)", Group = "Relative")]
-        public double RelativeSensitivity { get; set; }
-
-        [PluginGui("Sensitivity (multiplier)", Group = "Absolute")]
-        public double AbsoluteSensitivity { get; set; }
+        [PluginGui("Sensitivity (multiplier)")]
+        public double Sensitivity { get; set; }
 
         [PluginGui("Timeout in ms", Group = "Absolute")]
         public int AbsoluteTimeout { get; set; }
@@ -42,8 +38,7 @@ namespace HidWizards.UCR.Plugins.Remapper
         public DeltaToAxis()
         {
             Deadzone = 0;
-            RelativeSensitivity = 100;
-            AbsoluteSensitivity = 10000;
+            Sensitivity = 100;
             AbsoluteTimeout = 100;
             _absoluteModeTimer = new Timer();
             _absoluteModeTimer.Elapsed += AbsoluteModeTimerElapsed;
@@ -69,12 +64,12 @@ namespace HidWizards.UCR.Plugins.Remapper
                 if (Math.Abs(values[0]) < Deadzone) return;
                 if (Mode == Modes.Absolute)
                 {
-                    wideValue = (int)(values[0] * AbsoluteSensitivity);
+                    wideValue = (int)(values[0] * 100 * Sensitivity);
                     SetAbsoluteTimerState(true);
                 }
                 else
                 {
-                    wideValue = _currentValue + (int)(values[0] * RelativeSensitivity);
+                    wideValue = _currentValue + (int)(values[0] * Sensitivity);
                 }
             }
             var value = Functions.ClampAxisRange(wideValue);
