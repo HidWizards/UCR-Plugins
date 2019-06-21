@@ -40,7 +40,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="UCR.Core">
-      <HintPath>..\..\UCR\UCR.Core\obj\Debug\UCR.Core.dll</HintPath>
+      <HintPath>.\UCR.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
