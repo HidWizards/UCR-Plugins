@@ -11,8 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Ported plugins to new Material Design branch
 - [DeltaToAxis] Relative / Absolute mode is now a DDL
 - [DeltaToAxis] Sensitivity option now shared between absolute and relative modes  
-- [DeltaToAxis] Added Anti-Deadzone option  
-Absolute multiplies by an additional 100
+  Absolute multiplies by an additional 100
 ### Deprecated
 ### Removed
 ### Fixed

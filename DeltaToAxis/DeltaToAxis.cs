@@ -24,9 +24,6 @@ namespace HidWizards.UCR.Plugins.Remapper
         [PluginGui("Input Deadzone (Raw Mouse Value)")]
         public int Deadzone { get; set; }
 
-        [PluginGui("Output Anti Deadzone %")]
-        public int AntiDeadZone { get; set; }
-
         [PluginGui("Mode")]
         public Modes Mode { get; set; }
 
@@ -38,12 +35,10 @@ namespace HidWizards.UCR.Plugins.Remapper
 
         private short _currentValue;
         private readonly Timer _absoluteModeTimer;
-        private readonly AntiDeadZoneHelper _antiDeadZoneHelper = new AntiDeadZoneHelper();
 
         public DeltaToAxis()
         {
             Deadzone = 0;
-            AntiDeadZone = 0;
             Sensitivity = 100;
             AbsoluteTimeout = 100;
             _absoluteModeTimer = new Timer();
@@ -54,11 +49,6 @@ namespace HidWizards.UCR.Plugins.Remapper
         {
             WriteOutput(0, 0);
             SetAbsoluteTimerState(false);
-        }
-
-        public override void InitializeCacheValues()
-        {
-            Initialize();
         }
 
         public override void Update(params short[] values)
@@ -84,7 +74,6 @@ namespace HidWizards.UCR.Plugins.Remapper
                 }
             }
             var value = Functions.ClampAxisRange(wideValue);
-            if (AntiDeadZone != 0) value = _antiDeadZoneHelper.ApplyRangeAntiDeadZone(value);
             _currentValue = value;
             WriteOutput(0, value);
         }
@@ -109,11 +98,6 @@ namespace HidWizards.UCR.Plugins.Remapper
         public override void OnDeactivate()
         {
             SetAbsoluteTimerState(false);
-        }
-
-        private void Initialize()
-        {
-            _antiDeadZoneHelper.Percentage = AntiDeadZone;
         }
     }
 }
