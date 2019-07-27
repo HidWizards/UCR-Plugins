@@ -122,7 +122,6 @@ namespace AxesToAxesRotation
         {
             switch (propertyInfo.Name)
             {
-                case nameof(Sensitivity):
                 case nameof(DeadZone):
                     return InputValidation.ValidatePercentage(value);
                 case nameof(Rotation):
