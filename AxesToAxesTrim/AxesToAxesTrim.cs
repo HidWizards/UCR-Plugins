@@ -1,4 +1,5 @@
-﻿using HidWizards.UCR.Core.Attributes;
+﻿using System.Reflection;
+using HidWizards.UCR.Core.Attributes;
 using HidWizards.UCR.Core.Models;
 using HidWizards.UCR.Core.Models.Binding;
 using HidWizards.UCR.Core.Utilities;
@@ -82,7 +83,7 @@ namespace AxesToAxesTrim
             }
             else
             {
-                var outputValues = new [] { values[0], values[1] };
+                var outputValues = new[] { values[0], values[1] };
                 if (values[2] == 0) _trimValueTaken = false;    // ToDo: This is clumsy, fix once we can get notification of *which* input changed state
                 if (DeadZone != 0)
                 {
@@ -124,6 +125,17 @@ namespace AxesToAxesTrim
                 WriteOutput(0, outputValues[0]);
                 WriteOutput(1, outputValues[1]);
             }
+        }
+
+        public override PropertyValidationResult Validate(PropertyInfo propertyInfo, dynamic value)
+        {
+            switch (propertyInfo.Name)
+            {
+                case nameof(DeadZone):
+                    return InputValidation.ValidatePercentage(value);
+            }
+
+            return PropertyValidationResult.ValidResult;
         }
     }
 
