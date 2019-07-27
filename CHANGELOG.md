@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 - Added DeltaToButtons plugin
+- Added validation where appropriate
 ### Changed 
 - Ported plugins to new Material Design branch
 - [DeltaToAxis] Relative / Absolute mode is now a DDL
