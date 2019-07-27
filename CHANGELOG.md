@@ -20,6 +20,7 @@ This is the first version compatible with UCR 0.8.x
 ### Removed
 ### Fixed
 - Fixed Reset for DeltaToAxis Relative mode
+- AxesToAxesRotation no longer wraps
 
 ##[0.0.4] - 2019-01-03
 ### Changed
