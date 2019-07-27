@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Windows;
 using HidWizards.UCR.Core.Attributes;
 using HidWizards.UCR.Core.Models;
@@ -57,7 +58,7 @@ namespace AxesToAxesRotation
 
         public override void Update(params short[] values)
         {
-            var outputValues = new [] { values[0], values[1] };
+            var outputValues = new[] { values[0], values[1] };
             if (DeadZone != 0)
             {
                 if (CircularDz)
@@ -95,8 +96,8 @@ namespace AxesToAxesRotation
             {
                 var vector = new Vector(outputValues[0], outputValues[1]);
                 vector = vector.Rotate(Rotation);
-                outputValues[0] = (short)vector.X;
-                outputValues[1] = (short)vector.Y;
+                outputValues[0] = Functions.ClampAxisRange((int)vector.X);
+                outputValues[1] = Functions.ClampAxisRange((int)vector.Y);
             }
 
             WriteOutput(0, outputValues[0]);
@@ -116,6 +117,20 @@ namespace AxesToAxesRotation
             Initialize();
         }
         #endregion
+
+        public override PropertyValidationResult Validate(PropertyInfo propertyInfo, dynamic value)
+        {
+            switch (propertyInfo.Name)
+            {
+                case nameof(Sensitivity):
+                case nameof(DeadZone):
+                    return InputValidation.ValidatePercentage(value);
+                case nameof(Rotation):
+                    return InputValidation.ValidateRange(value, -360, 360);
+            }
+
+            return PropertyValidationResult.ValidResult;
+        }
     }
 
     public static class VectorExtensions
