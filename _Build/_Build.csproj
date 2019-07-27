@@ -48,12 +48,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>if exist "$(SolutionDir)Artifacts" rmdir "$(SolutionDir)Artifacts" /s /q
-mkdir "$(SolutionDir)Artifacts"</PreBuildEvent>
+    <PreBuildEvent>if exist "$(SolutionDir)UCR.Plugins" rmdir "$(SolutionDir)UCR.Plugins" /s /q
+mkdir "$(SolutionDir)UCR.Plugins"</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetDir)UCR.Core.dll" "$(ProjectDir)" /y
-copy "$(SolutionDir)CHANGELOG.md" "$(SolutionDir)Artifacts"
-copy "$(SolutionDir)Unblocker.ps1" "$(SolutionDir)Artifacts"</PostBuildEvent>
+
+</PostBuildEvent>
   </PropertyGroup>
 </Project>

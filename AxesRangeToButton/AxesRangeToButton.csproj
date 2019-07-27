@@ -56,6 +56,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)$(ProjectName).dll" "$(SolutionDir)Artifacts"</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetDir)$(ProjectName).dll" "$(SolutionDir)UCR.Plugins"</PostBuildEvent>
   </PropertyGroup>
 </Project>
