@@ -1,4 +1,5 @@
-﻿using HidWizards.UCR.Core.Attributes;
+﻿using System.Reflection;
+using HidWizards.UCR.Core.Attributes;
 using HidWizards.UCR.Core.Models;
 using HidWizards.UCR.Core.Models.Binding;
 using HidWizards.UCR.Core.Utilities;
@@ -86,5 +87,19 @@ namespace AxesRangeToButton
             Initialize();
         }
         #endregion
+
+        public override PropertyValidationResult Validate(PropertyInfo propertyInfo, dynamic value)
+        {
+            switch (propertyInfo.Name)
+            {
+                case nameof(XStart):
+                case nameof(XEnd):
+                case nameof(YStart):
+                case nameof(YEnd):
+                    return InputValidation.ValidateRange(value, -100, 100);
+            }
+
+            return PropertyValidationResult.ValidResult;
+        }
     }
 }
