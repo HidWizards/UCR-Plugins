@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Threading;
 using System.Timers;
 using HidWizards.UCR.Core.Attributes;
@@ -128,6 +129,17 @@ namespace DeltaToButtons
                 }
                 Thread.Sleep(10);
             }
+        }
+
+        public override PropertyValidationResult Validate(PropertyInfo propertyInfo, dynamic value)
+        {
+            switch (propertyInfo.Name)
+            {
+                case nameof(Min):
+                    return InputValidation.ValidateRange(value, -32768, 32767);
+            }
+
+            return PropertyValidationResult.ValidResult;
         }
     }
 }
