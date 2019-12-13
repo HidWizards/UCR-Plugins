@@ -6,10 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [Unreleased]
 
 ### Added
-- Add ReversibleThrottle plugin
 ### Changed 
 ### Deprecated
 ### Fixed
+
+##[0.8.1] - 2019-12-13  
+### Added
+- Add ReversibleThrottle plugin
 
 ##[0.8.0] - 2019-07-27  
 This is the first version compatible with UCR 0.8.x  
