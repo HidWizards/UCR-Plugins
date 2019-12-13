@@ -4,7 +4,7 @@ Experimental and niche plugins for UCR
 ## Using these plugins
 1. Download a release from the [releases page](https://github.com/HidWizards/UCR-Plugins/releases)  
 **DO NOT** use the green "Clone or Download" button on the main page!
-1. Right-click the zip archive, select properties, then tick the "Unblock" checkbox
+1. Right-click the zip archive, select properties, then tick the "Unblock" checkbox if it exists
 1. Extract the `.dll` files within to the UCR plugins folder (`Plugins\UCR.Plugins`)  
 
 ## Experimental Core Plugins
