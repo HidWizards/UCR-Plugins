@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventToButton", "EventToBut
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeltaToButtons", "DeltaToButtons\DeltaToButtons.csproj", "{932CF336-0564-4E33-9433-375CB98C9886}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReversibleThrottle", "ReversibleThrottle\ReversibleThrottle.csproj", "{35C07F51-FF2F-4D34-BA20-FA45120EF58F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{932CF336-0564-4E33-9433-375CB98C9886}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{932CF336-0564-4E33-9433-375CB98C9886}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{932CF336-0564-4E33-9433-375CB98C9886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35C07F51-FF2F-4D34-BA20-FA45120EF58F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35C07F51-FF2F-4D34-BA20-FA45120EF58F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35C07F51-FF2F-4D34-BA20-FA45120EF58F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35C07F51-FF2F-4D34-BA20-FA45120EF58F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
