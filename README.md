@@ -44,6 +44,12 @@ When you move the input axis, the amount of deflection determines how quickly th
 Useful, for example, if you wish to use a stick which springs back to center to control a throttle.  
 Requested by Spadino
 
+### ReversibleThrottle
+Used if you have a throttle / pedal like input device, but the game uses one axis for forward / reverse (Mid point is stop, max is forwards, min is reverse).  
+On press of a button, the throttle switches between the following modes:  
+Normal: Minimum throttle is stop, push throttle forward to move forwards  
+Reverse: Minimum throttle is stop, push throttle forward to move backwards  
+
 ## Developer Notes
 ### Building  
 The `_Build` project references `UCR.Core.dll` and when built, copies it into it's solution folder.  
