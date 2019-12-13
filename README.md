@@ -6,7 +6,6 @@ Experimental and niche plugins for UCR
 **DO NOT** use the green "Clone or Download" button on the main page!
 1. Right-click the zip archive, select properties, then tick the "Unblock" checkbox
 1. Extract the `.dll` files within to the UCR plugins folder (`Plugins\UCR.Plugins`)  
-You may need to unblock the DLLs in order for them to work - you can run `Unblocker.ps1` **as admin** to do this for you.  
 
 ## Experimental Core Plugins
 ### AxisToDelta
