@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Deprecated
 ### Fixed
 
+##[0.8.2] - 2019-12-18
+- [AxisToDelta Plugin] Fix issue #13  
+Moving mouse at max negative rate (towards left or top of screen) now works
+
 ##[0.8.1] - 2019-12-13  
 ### Added
 - Add ReversibleThrottle plugin

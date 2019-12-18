@@ -64,9 +64,7 @@ namespace AxisToDelta
             else
             {
                 var sign = Math.Sign(value);
-
-                value = Functions.ClampAxisRange(value);
-                _currentDelta = (short) ((Min + (Math.Abs(value) * _scaleFactor)) * sign);
+                _currentDelta = Functions.ClampAxisRange(Convert.ToInt32(Min + Functions.WideAbs(value) * _scaleFactor) * sign);
                 //Debug.WriteLine($"New Delta: {_currentDelta}");
                 SetAbsoluteTimerState(true);
             }
