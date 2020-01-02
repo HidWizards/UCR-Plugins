@@ -6,7 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [Unreleased]
 
 ### Added
+[AxesRangeToButton] Added "Tap Mode" to press and release output button once when in range
 ### Changed 
+[AxesRangeToButton] "Axis 1" input renamed to "X Axis" and "Axis 2" renamed to "Y Axis" for consistency with other options in plugin
 ### Deprecated
 ### Fixed
 
