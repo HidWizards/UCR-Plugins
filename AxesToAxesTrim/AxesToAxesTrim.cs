@@ -83,18 +83,18 @@ namespace AxesToAxesTrim
             }
             else
             {
-                var outputValues = new[] { values[0], values[1] };
+                var inputValues = new[] { values[0], values[1] };
                 if (values[2] == 0) _trimValueTaken = false;    // ToDo: This is clumsy, fix once we can get notification of *which* input changed state
                 if (DeadZone != 0)
                 {
                     if (CircularDz)
                     {
-                        outputValues = _circularDeadZoneHelper.ApplyRangeDeadZone(outputValues);
+                        inputValues = _circularDeadZoneHelper.ApplyRangeDeadZone(inputValues);
                     }
                     else
                     {
-                        outputValues[0] = _deadZoneHelper.ApplyRangeDeadZone(outputValues[0]);
-                        outputValues[1] = _deadZoneHelper.ApplyRangeDeadZone(outputValues[1]);
+                        inputValues[0] = _deadZoneHelper.ApplyRangeDeadZone(inputValues[0]);
+                        inputValues[1] = _deadZoneHelper.ApplyRangeDeadZone(inputValues[1]);
                     }
 
                 }
@@ -102,22 +102,24 @@ namespace AxesToAxesTrim
                 {
                     if (Linear)
                     {
-                        outputValues[0] = (short)(outputValues[0] * _linearSenstitivityScaleFactor);
-                        outputValues[1] = (short)(outputValues[1] * _linearSenstitivityScaleFactor);
+                        inputValues[0] = (short)(inputValues[0] * _linearSenstitivityScaleFactor);
+                        inputValues[1] = (short)(inputValues[1] * _linearSenstitivityScaleFactor);
                     }
                     else
                     {
-                        outputValues[0] = _sensitivityHelper.ApplyRangeSensitivity(outputValues[0]);
-                        outputValues[1] = _sensitivityHelper.ApplyRangeSensitivity(outputValues[1]);
+                        inputValues[0] = _sensitivityHelper.ApplyRangeSensitivity(inputValues[0]);
+                        inputValues[1] = _sensitivityHelper.ApplyRangeSensitivity(inputValues[1]);
                     }
                 }
 
                 // Apply trim
-                outputValues[0] += _trimX;
-                outputValues[1] += _trimY;
+                var wideValues = new[] { (int)inputValues[0], (int)inputValues[1] };
+                wideValues[0] += _trimX;
+                wideValues[1] += _trimY;
 
-                outputValues[0] = Functions.ClampAxisRange(outputValues[0]);
-                outputValues[1] = Functions.ClampAxisRange(outputValues[1]);
+                var outputValues = new short[2];
+                outputValues[0] = Functions.ClampAxisRange(wideValues[0]);
+                outputValues[1] = Functions.ClampAxisRange(wideValues[1]);
 
                 if (InvertX) outputValues[0] = Functions.Invert(outputValues[0]);
                 if (InvertY) outputValues[1] = Functions.Invert(outputValues[1]);
@@ -138,5 +140,4 @@ namespace AxesToAxesTrim
             return PropertyValidationResult.ValidResult;
         }
     }
-
 }
