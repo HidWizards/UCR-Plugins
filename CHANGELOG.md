@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Deprecated
 ### Fixed
 - [AxesToAxesTrim Plugin] Axes no longer wrap around
+- [AxisToAxisIncrement Plugin] Fixed crash on Min Value for axis
 
 ##[0.8.2] - 2019-12-18
 ### Fixed

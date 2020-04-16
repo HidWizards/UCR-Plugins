@@ -147,7 +147,8 @@ namespace AxisToAxisIncrement
 
         private void RelativeUpdate()
         {
-            if (Math.Sign((double)_currentInputValue) != Math.Sign((double)_currentOutputValue) && Math.Abs(_currentInputValue) < Math.Abs(lastInputValue))
+            //if (Math.Sign((double)_currentInputValue) != Math.Sign((double)_currentOutputValue) && Math.Abs(_currentInputValue) < Math.Abs(lastInputValue))
+            if (Math.Sign(_currentInputValue) != Math.Sign(_currentOutputValue) && Math.Abs((int)_currentInputValue) < Math.Abs((int)lastInputValue))
             {
                 _currentInputValue *= (short)(CounterEffect);
             }
