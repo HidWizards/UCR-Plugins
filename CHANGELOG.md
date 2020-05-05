@@ -6,9 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [Unreleased]
 
 ### Added
-- Add FPV Angle Mix plugin to emulate BetaFlight's feature of same name for Quadcopter simulators
 ### Changed 
 ### Deprecated
+### Fixed
+
+## [0.8.3] - 2020-05-04
+### Added
+- Add FPV Angle Mix plugin to emulate BetaFlight's feature of same name for Quadcopter simulators
 ### Fixed
 - [AxesToAxesTrim Plugin] Axes no longer wrap around
 - [AxisToAxisIncrement Plugin] Fixed crash on Min Value for axis
