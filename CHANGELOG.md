@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [Unreleased]
 
 ### Added
+- Add FPV Angle Mix plugin to emulate BetaFlight's feature of same name for Quadcopter simulators
 ### Changed 
 ### Deprecated
 ### Fixed
