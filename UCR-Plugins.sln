@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeltaToButtons", "DeltaToBu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReversibleThrottle", "ReversibleThrottle\ReversibleThrottle.csproj", "{35C07F51-FF2F-4D34-BA20-FA45120EF58F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FpvAngleMix", "FpvAngleMix\FpvAngleMix.csproj", "{B234EAE9-D26E-49F4-9EE7-7E44C4A319BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{35C07F51-FF2F-4D34-BA20-FA45120EF58F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35C07F51-FF2F-4D34-BA20-FA45120EF58F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35C07F51-FF2F-4D34-BA20-FA45120EF58F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B234EAE9-D26E-49F4-9EE7-7E44C4A319BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B234EAE9-D26E-49F4-9EE7-7E44C4A319BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B234EAE9-D26E-49F4-9EE7-7E44C4A319BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B234EAE9-D26E-49F4-9EE7-7E44C4A319BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
