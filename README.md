@@ -49,6 +49,12 @@ On press of a button, the throttle switches between the following modes:
 Normal: Minimum throttle is stop, push throttle forward to move forwards  
 Reverse: Minimum throttle is stop, push throttle forward to move backwards  
 
+### FpvAngleMix
+This emulates [BetaFlight](https://github.com/betaflight/betaflight)'s "FPV Angle Mix" feature.  
+First Person View (FPV) racing / freestyle quadcopters typically have their camera tilted up, so that when flying forwards (nose down), you can still see where you are going. This, however, impacts roll and yaw inputs as these inputs are relative to the craft, not to the camera view - such that, for example, at 90 degrees of camera up-tilt, roll becomes yaw and yaw becomes roll (From the perspective of the camera).  
+The FPV Angle Mix of BetaFlight corrects for this by converting roll input to yaw input and vice versa, as needed, to ensure that stick input is relative to the camera.  
+However, most simulators do not support this feature, so this plugin simulates it
+
 ## Developer Notes
 ### Building  
 The `_Build` project references `UCR.Core.dll` and when built, copies it into it's solution folder.  
