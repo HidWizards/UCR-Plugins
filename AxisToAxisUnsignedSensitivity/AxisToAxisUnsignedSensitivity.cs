@@ -13,7 +13,7 @@ namespace AxisToAxisUnsignedSensitivity
     [PluginSettingsGroup("Dead zone", Group = "Dead zone")]
     public class AxisToAxisUnsignedSensitivity : Plugin
     {
-        private float _sensitivityFactor;
+        private double _sensitivityFactor;
 
         [PluginGui("Invert")]
         public bool Invert { get; set; }
@@ -28,7 +28,7 @@ namespace AxisToAxisUnsignedSensitivity
         //public int AntiDeadZone { get; set; }
 
         [PluginGui("Percentage", Group = "Sensitivity")]
-        public float Sensitivity { get; set; }
+        public double Sensitivity { get; set; }
         //public int Sensitivity { get; set; }
 
         //private readonly DeadZoneHelper _deadZoneHelper = new DeadZoneHelper();
