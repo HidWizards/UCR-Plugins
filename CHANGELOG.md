@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Deprecated
 ### Fixed
 
+##[0.8.4] - 2020-11-07  
+### Added
+- Add AxesToAxesRateLimiter plugin
+
 ## [0.8.3] - 2020-05-04
 ### Added
 - Add FPV Angle Mix plugin to emulate BetaFlight's feature of same name for Quadcopter simulators

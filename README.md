@@ -55,6 +55,10 @@ First Person View (FPV) racing / freestyle quadcopters typically have their came
 The FPV Angle Mix of BetaFlight corrects for this by converting roll input to yaw input and vice versa, as needed, to ensure that stick input is relative to the camera.  
 However, most simulators do not support this feature, so this plugin simulates it
 
+### AxesToAxesRateLimiter
+Allows you to limit the rate of change of the axes. A user-settable parameter limits the maximum rate of change, which permits a less jerky (more "sluggish") response without sacrificing sensitivity or full-scale axis travel.
+This may be useful for users with certain accessibilty issues. Also some controllers especially with short joysticks can make it difficult to input small fast movements precisely, resulting in a jerky response.
+
 ## Developer Notes
 ### Building  
 The `_Build` project references `UCR.Core.dll` and when built, copies it into it's solution folder.  
